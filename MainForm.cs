@@ -15,6 +15,8 @@ namespace DLH
         public bool PerformingDeletion = false;
         public int? PreviousIndex = null;
 
+        public List<DLHEntry> dlhEntries = new List<DLHEntry>();
+
         public MainForm()
         {
             InitializeComponent();
@@ -35,15 +37,15 @@ namespace DLH
             }
 
             //Load the entries.
-            GlobalExchange.Inst.dlhEntries = JsonConvert.DeserializeObject<List<DLHEntry>>(File.ReadAllText(EntryJson));
+            dlhEntries = JsonConvert.DeserializeObject<List<DLHEntry>>(File.ReadAllText(EntryJson));
 
             //Check if an entry is corrupted.
             bool hadToDelete = false;
-            foreach(DLHEntry entry in GlobalExchange.Inst.dlhEntries.ToList())
+            foreach(DLHEntry entry in dlhEntries.ToList())
             {
                 if(entry.Name == string.Empty || entry.Link == string.Empty || entry.Type > 1 || entry.Type < 0)
                 {
-                    GlobalExchange.Inst.dlhEntries.Remove(entry);
+                    dlhEntries.Remove(entry);
                     hadToDelete = true;
                 }
             }
@@ -61,7 +63,7 @@ namespace DLH
         public void RemakeListView()
         {
             entryList.Items.Clear();
-            foreach (DLHEntry entry in GlobalExchange.Inst.dlhEntries)
+            foreach (DLHEntry entry in dlhEntries)
             {
                 string entryType = entry.Type == 0 ? "Video" : "GIF";
                 ListViewItem item = new ListViewItem(new[] { entry.Name, entryType, entry.Notes });
@@ -75,10 +77,10 @@ namespace DLH
             if (entryList.SelectedIndices.Count > 0)
             {
                 if (PerformingDeletion == true) return;
-                this.nameBox.Text = GlobalExchange.Inst.dlhEntries[entryList.SelectedIndices[0]].Name;
-                this.linkBox.Text = GlobalExchange.Inst.dlhEntries[entryList.SelectedIndices[0]].Link;
-                this.notesBox.Text = GlobalExchange.Inst.dlhEntries[entryList.SelectedIndices[0]].Notes;
-                this.typeBox.SelectedIndex = GlobalExchange.Inst.dlhEntries[entryList.SelectedIndices[0]].Type;
+                this.nameBox.Text = dlhEntries[entryList.SelectedIndices[0]].Name;
+                this.linkBox.Text = dlhEntries[entryList.SelectedIndices[0]].Link;
+                this.notesBox.Text = dlhEntries[entryList.SelectedIndices[0]].Notes;
+                this.typeBox.SelectedIndex = dlhEntries[entryList.SelectedIndices[0]].Type;
             }
             else return;
         }

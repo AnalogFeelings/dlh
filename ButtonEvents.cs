@@ -13,7 +13,7 @@ namespace DLH
             PerformingDeletion = true;
             foreach (ListViewItem item in entryList.SelectedItems)
             {
-                GlobalExchange.Inst.dlhEntries.RemoveAt(item.Index);
+                dlhEntries.RemoveAt(item.Index);
                 entryList.Items.Remove(item);
             }
             PerformingDeletion = false;
@@ -22,13 +22,13 @@ namespace DLH
 
         private void saveButton_Click(object sender, EventArgs e)
         {
-            if (GlobalExchange.Inst.dlhEntries.Count == 0)
+            if (dlhEntries.Count == 0)
             {
                 MessageBox.Show("Entry list is empty!", "Error!",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-            string serializedJson = JsonConvert.SerializeObject(GlobalExchange.Inst.dlhEntries, Formatting.Indented);
+            string serializedJson = JsonConvert.SerializeObject(dlhEntries, Formatting.Indented);
             File.WriteAllText(EntryJson, serializedJson);
 
             this.Text = WindowName;
@@ -36,7 +36,7 @@ namespace DLH
 
         private void copyButton_Click(object sender, EventArgs e)
         {
-            Clipboard.SetText(GlobalExchange.Inst.dlhEntries[entryList.SelectedIndices[0]].Link);
+            Clipboard.SetText(dlhEntries[entryList.SelectedIndices[0]].Link);
         }
 
         private void newButton_Click(object sender, EventArgs e)
@@ -52,7 +52,7 @@ namespace DLH
                     Link = newForm.linkBox.Text,
                     Notes = newForm.notesBox.Text
                 };
-                GlobalExchange.Inst.dlhEntries.Add(newEntry);
+                dlhEntries.Add(newEntry);
                 RemakeListView();
                 newForm.Close();
                 this.Text = WindowName + " - Unsaved!";
@@ -102,10 +102,10 @@ namespace DLH
             if (entryList.SelectedIndices.Count > 0)
             {
                 int itemIndex = entryList.SelectedIndices[0];
-                GlobalExchange.Inst.dlhEntries[entryList.SelectedIndices[0]].Name = nameBox.Text;
-                GlobalExchange.Inst.dlhEntries[entryList.SelectedIndices[0]].Link = linkBox.Text;
-                GlobalExchange.Inst.dlhEntries[entryList.SelectedIndices[0]].Notes = notesBox.Text;
-                GlobalExchange.Inst.dlhEntries[entryList.SelectedIndices[0]].Type = typeBox.SelectedIndex;
+                dlhEntries[entryList.SelectedIndices[0]].Name = nameBox.Text;
+                dlhEntries[entryList.SelectedIndices[0]].Link = linkBox.Text;
+                dlhEntries[entryList.SelectedIndices[0]].Notes = notesBox.Text;
+                dlhEntries[entryList.SelectedIndices[0]].Type = typeBox.SelectedIndex;
                 RemakeListView();
                 entryList.Items[itemIndex].Selected = true;
                 this.Text = WindowName + " - Unsaved!";
