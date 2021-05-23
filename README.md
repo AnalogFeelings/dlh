@@ -1,3 +1,5 @@
+<img src="icontest2.png" width="128" height="128">
+
 # Discord Link Helper (DLH)
 Discord Link Helper is basically the Discord GIF Favourites tab, on steroids, and with awful code.
 
