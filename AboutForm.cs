@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -15,6 +16,18 @@ namespace DLH
         public AboutForm()
         {
             InitializeComponent();
+        }
+
+        private void githubLink_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            githubLink.LinkVisited = true;
+
+            Process.Start("https://github.com/AestheticalZ/dlh");
+        }
+
+        private void quitButton_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

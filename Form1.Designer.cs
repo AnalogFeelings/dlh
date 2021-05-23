@@ -266,6 +266,7 @@ namespace DLH
             this.aboutButton.TabIndex = 13;
             this.aboutButton.Text = "About";
             this.aboutButton.UseVisualStyleBackColor = true;
+            this.aboutButton.Click += new System.EventHandler(this.aboutButton_Click);
             // 
             // MainForm
             // 

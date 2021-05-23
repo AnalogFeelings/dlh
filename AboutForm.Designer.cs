@@ -32,6 +32,8 @@ namespace DLH
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
+            this.githubLink = new System.Windows.Forms.LinkLabel();
+            this.quitButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -65,11 +67,34 @@ namespace DLH
             this.label2.TabIndex = 2;
             this.label2.Text = "Manuel \"AestheticalZ\" - Application\r\nBerkeliumAsset - Icon\r\n\r\nOpen Source!";
             // 
+            // githubLink
+            // 
+            this.githubLink.AutoSize = true;
+            this.githubLink.Location = new System.Drawing.Point(235, 212);
+            this.githubLink.Name = "githubLink";
+            this.githubLink.Size = new System.Drawing.Size(97, 13);
+            this.githubLink.TabIndex = 3;
+            this.githubLink.TabStop = true;
+            this.githubLink.Text = "Visit me on GitHub!";
+            this.githubLink.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.githubLink_LinkClicked);
+            // 
+            // quitButton
+            // 
+            this.quitButton.Location = new System.Drawing.Point(534, 202);
+            this.quitButton.Name = "quitButton";
+            this.quitButton.Size = new System.Drawing.Size(75, 23);
+            this.quitButton.TabIndex = 4;
+            this.quitButton.Text = "Okay!";
+            this.quitButton.UseVisualStyleBackColor = true;
+            this.quitButton.Click += new System.EventHandler(this.quitButton_Click);
+            // 
             // AboutForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(621, 237);
+            this.Controls.Add(this.quitButton);
+            this.Controls.Add(this.githubLink);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.pictureBox1);
@@ -87,5 +112,7 @@ namespace DLH
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.LinkLabel githubLink;
+        private System.Windows.Forms.Button quitButton;
     }
 }
