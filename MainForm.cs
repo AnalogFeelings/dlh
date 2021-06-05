@@ -41,15 +41,15 @@ namespace DLH
 
             //Check if an entry is corrupted.
             bool hadToDelete = false;
-            foreach(DLHEntry entry in dlhEntries.ToList())
+            foreach (DLHEntry entry in dlhEntries.ToList())
             {
-                if(entry.Name == string.Empty || entry.Link == string.Empty || entry.Type > 1 || entry.Type < 0)
+                if (entry.Name == string.Empty || entry.Link == string.Empty || entry.Type > 1 || entry.Type < 0)
                 {
                     dlhEntries.Remove(entry);
                     hadToDelete = true;
                 }
             }
-            if(hadToDelete == true)
+            if (hadToDelete == true)
             {
                 MessageBox.Show("Some entries were ignored due to corruption." +
                     " Please open the entries.json file and fix them manually.", "Warning!",

@@ -102,10 +102,10 @@ namespace DLH
             if (entryList.SelectedIndices.Count > 0)
             {
                 int itemIndex = entryList.SelectedIndices[0];
-                dlhEntries[entryList.SelectedIndices[0]].Name = nameBox.Text;
-                dlhEntries[entryList.SelectedIndices[0]].Link = linkBox.Text;
-                dlhEntries[entryList.SelectedIndices[0]].Notes = notesBox.Text;
-                dlhEntries[entryList.SelectedIndices[0]].Type = typeBox.SelectedIndex;
+                dlhEntries[itemIndex].Name = nameBox.Text;
+                dlhEntries[itemIndex].Link = linkBox.Text;
+                dlhEntries[itemIndex].Notes = notesBox.Text;
+                dlhEntries[itemIndex].Type = typeBox.SelectedIndex;
                 RemakeListView();
                 entryList.Items[itemIndex].Selected = true;
                 this.Text = WindowName + " - Unsaved!";
