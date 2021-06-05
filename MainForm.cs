@@ -51,7 +51,7 @@ namespace DLH
             }
             if(hadToDelete == true)
             {
-                MessageBox.Show("Some entires were ignored due to corruption." +
+                MessageBox.Show("Some entries were ignored due to corruption." +
                     " Please open the entries.json file and fix them manually.", "Warning!",
                     MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
